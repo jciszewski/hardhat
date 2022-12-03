@@ -11,12 +11,11 @@ async function main() {
 
   const HelloWorld  = await hre.ethers.getContractFactory("HelloWorld");
   const helloWorld = await HelloWorld.deploy();
-
- await helloWorld.deployed();
-
-  console.log(
-    ` deployed to ${helloWorld.address}`
-  );
+  await helloWorld.deployed();
+  console.log(`deployed to ${helloWorld.address}`);
+  const hello = await HelloWorld.attach(helloWorld.address);
+  const returnValue = await hello.helloWorld();
+  console.log(returnValue);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
