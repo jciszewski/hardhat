@@ -13,8 +13,10 @@ async function main() {
   const helloWorld = await HelloWorld.deploy();
   await helloWorld.deployed();
   console.log(`deployed to ${helloWorld.address}`);
-  const hello = await HelloWorld.attach(helloWorld.address);
-  const returnValue = await hello.helloWorld();
+  const Manager  = await hre.ethers.getContractFactory("Manager");
+  const manager = await Manager.deploy(helloWorld.address); 
+  console.log(`deployed to ${manager.address}`);
+  const returnValue = await manager.doStuff();
   console.log(returnValue);
 }
 
