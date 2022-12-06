@@ -15,7 +15,6 @@ describe('HelloWorld', function () {
         await this.helloWorld.helloWorld();
 
         // Test if the returned value is the same one
-        // Note that we need to use strings to compare the 256 bit integers
         expect((await this.helloWorld.helloWorld()).toString()).to.equal('Hello World');
     });
 });
